@@ -1,22 +1,22 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Employees from '../pages/Employees';
-import Login from '../pages/Login';
-import Upload from '../pages/Upload';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import Employees from "../pages/Employees"
+import Home from "../pages/Home"
+import Login from "../pages/Login"
+import NotFound from "../pages/NotFound"
+import Upload from "../pages/Upload"
 
-
+// *-*-*-*-*-*-*-*-*-*-*-* Rutas *-*-*-*-*-*-*-*-*-*-*-*-*
 const AppRouter = () => {
   return (
-	<Router>
-		<Route exact path="/login">
-			<Login/>
-		</Route>
-		<Route exact path="/employess">
-			<Employees/>
-		</Route>
-		<Route exact path="/upload">
-			<Upload/>
-		</Route>
-	</Router>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home /> } />
+        <Route path="/login" element={<Login />} />
+        <Route path="/employess" element={<Employees />} />
+        <Route path="/upload" element={<Upload />} />
+		  <Route element={<NotFound/>}/>
+      </Routes>
+    </Router>
   )
 }
 
