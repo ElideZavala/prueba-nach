@@ -1,19 +1,14 @@
 import "./styles/App.scss"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import Login from "./pages/Login"
-import Employees from "./pages/Employees"
-import Upload from "./pages/Upload"
+import AppRouter from "./routers/AppRouter"
+// import Header from "./componets/Header"
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-          <Routes>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/employess" element={<Employees />}/>
-            <Route path="/upload" element={<Upload />}/>
-          </Routes>
-      </Router>
+    <div className="App light">
+      {/* <Header/> */}
+      <AppRouter/>
     </div>
   )
 }
