@@ -1,0 +1,29 @@
+
+// *-*-*-*-*-*-*-*-*-*-*-* Colors *-*-*-*-*-*-*-*-*-*-*-*-*
+.light {
+	--color-primary: #2A363B;
+	--color-primary-m: #2A363Bd1;
+	--color-secondary: #e84a5f;
+	--color-secondary-m: #E84A5Fd1;
+	--color-quaternary:#99B898;
+	--color-quaternary-m:#99B898D1;
+	--color-tertiary: #ff847c;
+	--color-tertiary-m: #FF847CD1;
+	--color-quinary: rgb(254, 206, 168);
+	--color-quinary-m: #fecea8d1;
+	--color-text: #1c2428;
+	--color-text2: #fff;
+}
+
+// *-*-*-*-*-*-*-*-*-*- Font Size *-*-*-*-*-*-*-*-*-*-*-*-*
+$font-sizes: (
+	'font-size-small': calc( 8px + .5vw),
+	'font-size-regular': calc( 8px + .6vw),
+	'font-size-medium': calc(8px + .9vw),
+	'font-size-large': calc(1rem + 1vw),
+	'font-size-xlarge': calc(1rem + 2vw),
+);
+
+@function font-size($font-size-style) {
+	@return map-get($font-sizes, $font-size-style) 
+};
