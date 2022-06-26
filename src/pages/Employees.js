@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import getEmployees from "../helpers/getEmployees"
-import moment from "moment";
+// import moment from "moment";
 import MUIDataTable from "mui-datatables";
 
 const options = {filterType: 'checkbox',};
 
 const Employees = () => {
 	const [ employees, setemployees] = useState([]);
-	const [ error, setError ] = useState(null);
+	// const [ error, setError ] = useState(null);
 
 	useEffect(() => {
 		updateEmployees();
