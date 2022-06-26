@@ -11,7 +11,12 @@ const imageReducer = (state=initialState, action) => {
 		case IMAGE_TYPES.IMAGE_ADD: 
 			return {
 				...state,
-				images: [...state.images, action.payload]
+				images: [action.payload,...state.images ]
+			}
+		case IMAGE_TYPES.IMAGE_DELETE:
+			return {
+				...state,
+				images: state.images.filter(image => image.id !== action.payload)
 			}
 		default:
 			return state;
