@@ -58,3 +58,23 @@
 	padding: 6px 12px;
 	background-color: var(--color-quinary-m);
 }
+
+%button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+	background: var(--color-tertiary);
+	color: #fff;
+	transition: all 0.5s ease-in-out;
+	
+	&:hover,
+	&:active {
+		background: var(--color-quaternary);
+		color: var(--color-primary)
+	}
+}

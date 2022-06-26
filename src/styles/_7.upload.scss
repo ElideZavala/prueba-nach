@@ -5,33 +5,95 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
+	background-color: red;
+	overflow: hidden;
+	
 	&__form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		outline: groove 2px #000;
+		
+		width: 40vw;
+		height: 25vw;
 
-		&--img,
-		&--button {
-			width: 200px;
-			height: 200px;
-			border-radius: 50%;
-			cursor: pointer;
-		}
-
-		&--img {
-			object-fit: cover;
-		}
-
-		&--button {
+		&--showImage {
 			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			&img {
+				object-fit: cover;
+			}
+		}
+
+		&--carrousel {
+			min-width: 100%;
+			margin: 2rem;
+			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
-			font-size: 18px;
-			border: none;
-			background: #fef289;
-			color: #000;
+			padding: 2rem;
+			outline: hidden;
+			z-index: 10;
+			pointer-events: none;
+			
+			&__image {
+				margin: 1rem;
+				object-fit: cover;
+				position: relative;
+			}
+
+			&__left,
+			&__right {
+				@extend %button;
+				pointer-events: all;
+				cursor: pointer;
+			}
+			
+			&__left {
+				margin-right: 1rem;
+				text-shadow: -2px 0px 0px #fff;
+			}
+			
+			&__right {
+				margin-left: 1rem;
+				text-shadow: 2px 0px 0px #fff;
+			}
+
+			&__contain {
+				display: flex;
+				flex-wrap: nowrap;
+				overflow: hidden;
+				width: 40vh;
+				background-color: #000;	
+				transition: all .3s ease;
+			}
+		}
+
+		&--button {
+			position: absolute;
+			margin-top: 1rem;
+			top: 10vh;
+			@extend %button;
 		}
 
 		&--input {
-			display: none;
+			// display: none;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			width: inherit;
+			height: inherit;
+			// outline: none;
+			opacity: 0;
+			cursor: pointer;
 		}
+		
 	}
+
+	
+	
 }
