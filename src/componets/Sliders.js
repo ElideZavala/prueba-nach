@@ -1,45 +1,89 @@
-import { useEffect } from "react"
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useRef, useState } from "react"
+import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as Left } from "../images/left.svg"
 import { ReactComponent as Right } from "../images/right.svg"
+import { deleteImage } from "../redux/actions/imageActions";
 
-const Sliders = ({ preview }) => {
+
+const Sliders = () => {
 	const { images } = useSelector(state => state);
-	const siguiente = () => {
-		console.log('siguiente')
-		console.log(images)
-	}
+	const slideshow = useRef(null);
+	const dispatch = useDispatch();
+	// const [saveImage, setSaveImage] = useState({})
 
-	const anterior = () => {
-		console.log('anterior')
-	}
+	// const setLocalStorage = () => {
+	// 	 window.localStorage.setItem("images", JSON.stringify(images))	
+	// 	// const getImages = 
+	// 	// console.log(getImages)
+	// 	setSaveImage(window.localStorage.getItem(JSON.parse('images')));
+	// }
 
-	useEffect(() => {
-		console.log(images.images.length)
-	}, [images])
+	// useEffect(() => {
+	// 	setLocalStorage();
+	// },[images])
+	
+	const siguiente = useCallback (() => {
+		if(slideshow.current.children.length > 0) {
+			const primerElemento = slideshow.current.children[0];
+			slideshow.current.style.transition = `300ms ease-out all`;
+			const sizeSlide = slideshow.current.children[0].offsetWidth;
+			slideshow.current.style.transform = `translateX(-${sizeSlide}px)`;
+			
+			const transicion = () => {
+				slideshow.current.style.transition = 'none';
+				slideshow.current.style.transform = `translateX(0)`;
+				slideshow.current.appendChild(primerElemento);
+				// Eliminamos la transicion anterior. 
+				slideshow.current.removeEventListener('transitionend', transicion);
+			}
+
+			slideshow.current.addEventListener('transitionend', transicion);
+		}
+	},[]); 
+
+	const anterior = useCallback (() => {
+		if(slideshow.current.children.length > 0) {
+			// Accedemos al ultimo elemento. 
+			const index = slideshow.current.children.length - 1;
+			const ultimoElemento = slideshow.current.children[index];
+			//Insertamos el ultimo elemento al primero
+			slideshow.current.insertBefore(ultimoElemento, slideshow.current.firstChild);
+			slideshow.current.style.transition = 'none';
+			const sizeSlide = slideshow.current.children[0].offsetWidth;
+			slideshow.current.style.transform = `translateX(-${sizeSlide}px)`;
+
+			setTimeout(() => {
+				slideshow.current.style.transition = `300ms ease-out all`;
+				slideshow.current.style.transform = `translateX(0)`;
+			})
+		}
+	},[]);
 
 	return (
 		<div className="upload__form--carrousel">
-				{images.images.length > 0 && (
+				{images.images.length > 1 && (
 					<button className="upload__form--carrousel__left" onClick={anterior}>
 						<Left/>
 					</button>
 				)}
 				<div className="upload__form--carrousel__contain">
-					{images.images.map((image) => (
-						<div key={image.id} className="upload__form--carrousel__image">
-							<img src={image.image} alt="" height='250rem' width='370rem'/>
-						</div>
-					))}
+					<div className="upload__form--carrousel__contain--slideshow" ref={slideshow}>
+						{images.images.map((image) => (
+							<div key={image.id}>
+							<div className="upload__form--carrousel__contain--slideshow__image">
+								<img className="upload__form--carrousel__contain--slideshow__image--img" src={image.image} alt=""/>
+							</div>
+							<button  className="upload__form--carrousel__contain--slideshow__image--buttom" onClick={() => dispatch(deleteImage(image.id))}>Eliminar Imagen</button>
+							</div>
+						))}
+					</div>
 				</div>
-				{images.images.length > 0 && (	
+				{images.images.length > 1 && (	
 					<button className="upload__form--carrousel__right" onClick={siguiente}>
 						<Right/>
 					</button>
 				)}
 			</div>
-			
-
 	)
 } 
 

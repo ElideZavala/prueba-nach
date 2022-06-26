@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { useSelector, useDispatch  } from "react-redux";
+import { useState } from "react"
+import { useDispatch  } from "react-redux";
 import Sliders from "../componets/Sliders";
 
 import { addImage } from '../redux/actions/imageActions'
@@ -7,7 +7,6 @@ import { addImage } from '../redux/actions/imageActions'
 const Upload = () => {
 	const dispatch = useDispatch();
 	const [preview, setPreview] = useState(null);
-	const [saveImage, setSaveImage] = useState("")
 
 	const changeImage = (e) => {
 		const reader = new FileReader();
@@ -19,7 +18,6 @@ const Upload = () => {
 	}
 	
 	const uploadImage = () => {
-		console.log({ id: Date.now(), image: preview})
 		const newImage = { id: Date.now(), image: preview}
 		dispatch(addImage(newImage));
 	}
@@ -41,12 +39,13 @@ const Upload = () => {
 					<h3> Drag and drop a file or select add multiple images</h3>
 				</div>
 				<div className="upload__form--showImage">
-					<img src={preview} alt="" height="150px" width="250px"/>
+					<img src={preview} alt="" width='350rem' height='240rem'/>
 				</div>
 
 			</form>
-			<Sliders preview={preview}/>
-			<button className="upload__form--button" onClick={uploadImage}>Save Image</button>
+			<Sliders/>
+			{preview && <button className="upload__form--button" onClick={uploadImage}>Save Image</button>}
+			
 			
 		</div>
 	</>
