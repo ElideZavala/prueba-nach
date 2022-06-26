@@ -5,45 +5,74 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: red;
+	background-image: radial-gradient(circle at 0% 0%, var(--color-quinary) 50%, var(--color-tertiary) 75%, var(--color-secondary) 100%);
+	animation: 2s linear 0s infinite alternate-reverse background;
 	overflow: hidden;
 	
 	&__form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-evenly;
 		outline: groove 2px #000;
-		
 		width: 40vw;
 		height: 25vw;
-
-		&--showImage {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			
-			&img {
-				object-fit: cover;
-			}
-		}
-
+		
 		&--carrousel {
 			min-width: 100%;
 			margin: 2rem;
 			display: flex;
-			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
-			padding: 2rem;
-			outline: hidden;
-			z-index: 10;
 			pointer-events: none;
+			// overflow: hidden;
 			
-			&__image {
-				margin: 1rem;
-				object-fit: cover;
+			&__contain {
 				position: relative;
+				display: flex;
+				flex-wrap: nowrap;
+				width: 40vh;
+				height: 38vh;
+				// background-color: #fff;
+				overflow: hidden;
+				// width: 100%;
+				
+				&--slideshow {
+					position: absolute;
+					top: 0;
+					display: flex;
+					// min-width: 100%;
+					// display: flex;
+					transition: all .3s ease;
+					position: relative;
+
+					&__image {
+
+						&--img {
+							object-fit: cover;
+							width: 40vh;
+							height: 35vh;
+							vertical-align: top;
+						}
+
+						&--buttom {
+							position: absolute;
+							padding: .5rem;
+							@extend %difuminado;
+							transition: all 0.3s ease-in-out;
+							outline: none;
+							border: none;
+							z-index: 10;
+							pointer-events: all;
+							cursor: pointer;
+
+							&:hover {
+								background-color: var(--color-quaternary);
+							}
+						}
+					}
+
+				}
 			}
 
 			&__left,
@@ -51,6 +80,7 @@
 				@extend %button;
 				pointer-events: all;
 				cursor: pointer;
+				z-index: 5;
 			}
 			
 			&__left {
@@ -62,26 +92,17 @@
 				margin-left: 1rem;
 				text-shadow: 2px 0px 0px #fff;
 			}
-
-			&__contain {
-				display: flex;
-				flex-wrap: nowrap;
-				overflow: hidden;
-				width: 40vh;
-				background-color: #000;	
-				transition: all .3s ease;
-			}
+			
 		}
 
 		&--button {
 			position: absolute;
 			margin-top: 1rem;
-			top: 10vh;
+			top: 13vh;
 			@extend %button;
 		}
 
 		&--input {
-			// display: none;
 			position: absolute;
 			margin: 0;
 			padding: 0;
@@ -91,6 +112,22 @@
 			opacity: 0;
 			cursor: pointer;
 		}
+		
+		&--showImage {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			// object-fit: contain;
+			// overflow: hidden;
+			
+			&img {
+				// height: 40%;
+				// width: 40%;
+				object-fit: cover;
+			}
+		}
+		
+		
 		
 	}
 
