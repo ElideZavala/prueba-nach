@@ -1,20 +1,16 @@
-import { ALERT_TYPES } from "./alertActions";
-
 export const TYPES = {
 	AUTH : 'AUTH'
 }
 
-export const login = (data) => async (dispatch) => {
+export const login = () => async (dispatch) => {
 	try {
 		dispatch({
-			type: ALERT_TYPES.ALERT,
+			type: TYPES.AUTH,
 			payload: {
-				loading: true,
+				token: true,
 			}
 		})
-
-		const res = await postDataApi('login', data);
-	} catch {
-
+	} catch(error) {
+		throw error
 	}
 }
