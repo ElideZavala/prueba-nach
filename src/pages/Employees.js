@@ -2,13 +2,17 @@ import { useCallback, useEffect, useState } from "react";
 import getEmployees from "../helpers/getEmployees"
 import moment from "moment";
 import MUIDataTable from "mui-datatables";
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { getEmployeesDatas } from "../redux/actions/employeeActions";
 
 const options = {filterType: 'checkbox',};
 
 const Employees = () => {
-	const [ employees, setemployees] = useState([]);
+	const dispatch = useDispatch();
+	const { employees } = useSelector(state => state);
+
 	// const [ error, setError ] = useState(null);
-	
 	useEffect(() => {
 		updateEmployees();
 	}, [])
@@ -17,10 +21,16 @@ const Employees = () => {
 	const updateEmployees = useCallback(() => {
 		getEmployees()
 				.then((NewEmployees) => {
-					const birthday = NewEmployees.map(employee => ( 
-						employee.birthday = moment(employee.birthday).format("MM /DD /YY")
+					// Convertir birthday a fecha YYYY/MM/DD.
+					NewEmployees.map(employee => ( 
+						employee.birthday = moment(employee.birthday).format("YYYY/MM/DD")
 					))
-					setemployees([...NewEmployees, NewEmployees.birthday = birthday] )
+
+					// Los empleadosadd mas birthday en (YYYY/MM/DD) .
+					const allEmployees = [...NewEmployees]
+
+					// Guardar
+					dispatch(getEmployeesDatas(allEmployees))
 				})
 				
 				.catch((error) => {
@@ -29,6 +39,7 @@ const Employees = () => {
       		})
 
 		},[employees])
+		
 	
 	const columns = [
 		{
@@ -37,11 +48,11 @@ const Employees = () => {
 		},
 		{
 			name: "last_name",
-			label: "lAST NAME"
+			label: "NAME"
 		},
 		{
 			name: "name",
-			label: "NAME"
+			label: "LAST NAME"
 		},
 		{
 			name:  "birthday",
@@ -58,7 +69,8 @@ const Employees = () => {
 			 columns={columns}
 			 options={options}
 		 />
-		 <button>Crear nuevo Empleado</button>
+		 {/* <button>Crear nuevo Empleado</button> */}
+		 <Link to="/register">Crear nuevo Empleado</Link>
 	 </div>
   )
 }

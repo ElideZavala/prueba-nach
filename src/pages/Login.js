@@ -1,20 +1,27 @@
-import { useState } from "react"
-import { Link, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
+// import { History } from "react-router-dom"
+
 
 /* Icons of Material UI */
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 const Login = () => {
-	const initialState = {email: '', password: ''}
+	const initialState = {
+		email: 'prueba@gmail.com', 
+		password: '123456'
+	}
+
 	const [showpass, setShowpass] = useState(false)
 	const [userData, setUserData] = useState(initialState)
-	// const { employees } = useSelector(state => state);
-
-
-
 	const {email, password} = userData; 
+	const history = useHistory()
+	
 
+	// useEffect(() => {
+		
+	// })
 
  	const handleChange = (e) => {
 		const {name, value} = e.target;
@@ -24,7 +31,13 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setUserData({email, password})
-		// dispatch(login(userData))
+		console.log(userData)
+		console.log(inialState)
+		if (userData === initialState) {
+			// window.location = '/upload'
+			// history.push('/upload')
+			
+		}
 	}
 
   return (
@@ -54,7 +67,6 @@ const Login = () => {
 				<small className="login__data--form__showpass" onClick={()=>setShowpass(!showpass)}>{showpass ? <VisibilityOffIcon/> : <VisibilityIcon/> }</small>
 
 				<button className="login__data--form__button" type="submit">Log In</button>
-				<p className="login__data--form__small">Do not have account <Link to="register">Create Here</Link></p>
 			</form>
 		</div>
 	</div>
