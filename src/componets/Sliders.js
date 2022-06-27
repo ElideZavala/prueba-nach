@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as Left } from "../images/left.svg"
 import { ReactComponent as Right } from "../images/right.svg"
@@ -9,19 +9,7 @@ const Sliders = () => {
 	const { images } = useSelector(state => state);
 	const slideshow = useRef(null);
 	const dispatch = useDispatch();
-	// const [saveImage, setSaveImage] = useState({})
 
-	// const setLocalStorage = () => {
-	// 	 window.localStorage.setItem("images", JSON.stringify(images))	
-	// 	// const getImages = 
-	// 	// console.log(getImages)
-	// 	setSaveImage(window.localStorage.getItem(JSON.parse('images')));
-	// }
-
-	// useEffect(() => {
-	// 	setLocalStorage();
-	// },[images])
-	
 	const siguiente = useCallback (() => {
 		if(slideshow.current.children.length > 0) {
 			const primerElemento = slideshow.current.children[0];

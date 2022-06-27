@@ -63,6 +63,7 @@ const Register = () => {
 					/>
 					<small>{name.length}/30</small>
 				</div>
+				<label htmlFor='name'>Cumpleaños</label>
 				<div className='register__employee--employeedata__calendar'>
 					<input 
 						type='date'

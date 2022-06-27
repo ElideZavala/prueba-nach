@@ -8,7 +8,6 @@ import Upload from "../pages/Upload"
 // *-*-*-*-*-*-*-*-*-*-*-* Rutas *-*-*-*-*-*-*-*-*-*-*-*-*
 const AppRouter = () => {
   return (
-    <>
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -18,7 +17,6 @@ const AppRouter = () => {
 		    <Route element={<NotFound/>}/>
       </Routes>
     </Router>
-    </>
   )
 }
 
