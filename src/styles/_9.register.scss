@@ -1,0 +1,77 @@
+.register__employee {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-display: column;
+	height: 100vh;
+	max-width: 100%;
+	background-image: radial-gradient(circle at 0% 0%, var(--color-quinary) 50%, var(--color-tertiary) 75%, var(--color-secondary) 100%);
+	animation: 2s linear 0s infinite alternate-reverse background;
+
+	&--head {
+		font-size: 2vw;
+		color: var(--color-secondary);
+	}
+
+	&--employeedata {
+		height: 40vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+
+		label {
+			display: flex;
+			justify-content: center;
+			font-size: 1.2vw;
+			text-transform: uppercase
+		}
+
+		&__name,
+		&__lastname,
+		&__calendar {
+			@extend %input;
+			@extend %inputBtn;
+			display: flex;
+			align-items: center;
+				
+				input {
+					background-color: transparent;
+					border: none;
+					outline: none;
+					font-size: 1vw;
+				}
+
+
+				&::placeholder {
+					font-size: font-size(font-size-regular);
+					color: #ffffffa5;
+					text-shadow: none;
+				}
+			}
+		&__calendar {
+			cursor: pointer;
+		}
+		
+		&__submit {
+			font-weight: 800;
+			text-transform: uppercase;
+			cursor: pointer;
+			background: linear-gradient(60deg, var(--color-quinary), var(--color-tertiary));
+			box-shadow: 0 0 5px var(--color-quinary), 0 0 15px var(--color-tertiary);
+			transition: background .5s ease-in-out;
+			transition: box-shadow .5s ease-in-out;
+			border: none;
+			border-radius: 8px;
+			padding: .5vw;
+			
+	
+				&:hover {
+					background: linear-gradient(60deg, var(--color-secondary), var(--color-primary));
+					box-shadow: 0 0 5px var(--color-secondary), 0 0 15px var(--color-primary);
+					color: var(--color-text2);
+				}
+		}
+	}
+
+}

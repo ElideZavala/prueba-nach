@@ -5,6 +5,7 @@
 	flex-direction: column;
 	font-display: column;
 	height: 100vh;
+	overflow: hidden;
 	max-width: 100%;
 	background-image: radial-gradient(circle at 0% 0%, var(--color-quinary) 50%, var(--color-tertiary) 75%, var(--color-secondary) 100%);
 	animation: 2s linear 0s infinite alternate-reverse background;
@@ -76,14 +77,14 @@
 			background-color: var(--color-quaternary);
 			box-shadow: 0 0 20px rgba(0, 0, 0, 0.543);
 			border-radius: 8px;
-			height: calc(5rem + 20vw);
-			min-width: 25vw;
+			height: calc(5rem + 15vw);
+			min-width: 20vw;
 			padding: 4rem;
 			position: relative;
 			
 			&__showpass {
 				position: absolute;
-				top: 40.6%;
+				top: 47%;
 				right: 17%;
 				cursor: pointer;
 				font-size: font-size(font-size-small);
@@ -120,10 +121,6 @@
 					box-shadow: 0 0 5px var(--color-secondary), 0 0 15px var(--color-primary);
 					color: var(--color-text2);
 				}
-			}
-
-			&__small {
-				@extend %formSmall;
 			}
 		}
 
