@@ -1,13 +1,12 @@
-import "./styles/App.scss"
-import AppRouter from "./routers/AppRouter"
-// import Header from "./componets/Header"
-
-
+import "./styles/App.scss";
+import Header from "./componets/Header";
+import AppRouter from "./routers/AppRouter";
 
 function App() {
+  
   return (
     <div className="App light">
-      {/* <Header/> */}
+      <Header/>
       <AppRouter/>
     </div>
   )
