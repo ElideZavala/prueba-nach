@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import getEmployees from "../helpers/getEmployees"
-// import moment from "moment";
+import moment from "moment";
 import MUIDataTable from "mui-datatables";
 
 const options = {filterType: 'checkbox',};
@@ -8,23 +8,27 @@ const options = {filterType: 'checkbox',};
 const Employees = () => {
 	const [ employees, setemployees] = useState([]);
 	// const [ error, setError ] = useState(null);
-
+	
 	useEffect(() => {
 		updateEmployees();
 	}, [])
 	
 	/* ******* llamado a la API de Empleados ******* */
-	const updateEmployees = () => {
+	const updateEmployees = useCallback(() => {
 		getEmployees()
-		.then((NewEmployees) => {
-			const employees = NewEmployees.data.employees
-			setemployees(employees)
-			})
-		.catch((error) => {
-			console.log(error)
-			// setError("Error al cargar los usuarios")
-      })
-	}
+				.then((NewEmployees) => {
+					const birthday = NewEmployees.map(employee => ( 
+						employee.birthday = moment(employee.birthday).format("MM /DD /YY")
+					))
+					setemployees([...NewEmployees, NewEmployees.birthday = birthday] )
+				})
+				
+				.catch((error) => {
+					throw error
+					// setError("Error al cargar los usuarios")
+      		})
+
+		},[employees])
 	
 	const columns = [
 		{
@@ -40,9 +44,9 @@ const Employees = () => {
 			label: "NAME"
 		},
 		{
-			name:  "bithday",
-			label: "BIRTHDAY"
-		}
+			name:  "birthday",
+			label: "BIRTHDAY",
+		},
 	];
 
 
@@ -54,6 +58,7 @@ const Employees = () => {
 			 columns={columns}
 			 options={options}
 		 />
+		 <button>Crear nuevo Empleado</button>
 	 </div>
   )
 }
