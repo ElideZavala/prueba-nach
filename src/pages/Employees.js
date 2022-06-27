@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import getEmployees from "../helpers/getEmployees"
 import moment from "moment";
 import MUIDataTable from "mui-datatables";
@@ -12,7 +12,6 @@ const Employees = () => {
 	const dispatch = useDispatch();
 	const { employees } = useSelector(state => state);
 
-	// const [ error, setError ] = useState(null);
 	useEffect(() => {
 		updateEmployees();
 	}, [])
@@ -35,10 +34,9 @@ const Employees = () => {
 				
 				.catch((error) => {
 					throw error
-					// setError("Error al cargar los usuarios")
       		})
 
-		},[employees])
+		},[employees, dispatch])
 		
 	
 	const columns = [

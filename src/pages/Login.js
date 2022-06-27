@@ -16,11 +16,7 @@ const Login = () => {
 	const [userData, setUserData] = useState(initialState)
 	const {email, password} = userData; 
 	const dispatch = useDispatch();
-	
 
-	// useEffect(() => {
-		
-	// })
 
  	const handleChange = (e) => {
 		const {name, value} = e.target;
