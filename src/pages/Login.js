@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
-// import { History } from "react-router-dom"
-
+import { useState } from "react"
 
 /* Icons of Material UI */
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { login } from "../redux/actions/authActions";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
 	const initialState = {
@@ -16,7 +15,7 @@ const Login = () => {
 	const [showpass, setShowpass] = useState(false)
 	const [userData, setUserData] = useState(initialState)
 	const {email, password} = userData; 
-	const history = useHistory()
+	const dispatch = useDispatch();
 	
 
 	// useEffect(() => {
@@ -31,13 +30,12 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setUserData({email, password})
-		console.log(userData)
-		console.log(inialState)
-		if (userData === initialState) {
-			// window.location = '/upload'
-			// history.push('/upload')
+		// if (userData instanceof password && initialState instanceof password) {
+		// 	console.log("Son Iguales")
 			
-		}
+		// }
+		dispatch(login())
+		window.location = '/upload'
 	}
 
   return (
