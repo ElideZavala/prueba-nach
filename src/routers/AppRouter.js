@@ -1,22 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import Header from "../componets/Header"
 import Employees from "../pages/Employees"
-import Home from "../pages/Home"
 import Login from "../pages/Login"
 import NotFound from "../pages/NotFound"
+import Register from "../pages/Register"
 import Upload from "../pages/Upload"
 
 // *-*-*-*-*-*-*-*-*-*-*-* Rutas *-*-*-*-*-*-*-*-*-*-*-*-*
 const AppRouter = () => {
   return (
+    <>
     <Router>
+      <Header/>
       <Routes>
-        <Route path="/" element={<Home /> } />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/employess" element={<Employees />} />
         <Route path="/upload" element={<Upload />} />
-		  <Route element={<NotFound/>}/>
+        <Route path="/register" element={<Register />} />
+		    <Route element={<NotFound/>}/>
       </Routes>
     </Router>
+    </>
   )
 }
 
