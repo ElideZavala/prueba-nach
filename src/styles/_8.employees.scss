@@ -1,3 +1,16 @@
 .contain__table {
 	background-color: #fff;
+
+	&--button {
+		position: absolute;
+		margin: 1rem;
+		@extend %input;
+		@extend %inputBtn; 
+		transition: background 0.3s ease-in-out;
+
+		&:hover {
+			background: var(--color-quaternary);
+		}
+	}
 }
+
