@@ -24,11 +24,11 @@ const Login = () => {
 	}
 
 	const handleSubmit = (e) => {
-		e.preventDefault()
-		setUserData({email, password})
-		// if (userData instanceof password && initialState instanceof password) {
-		// 	console.log("Son Iguales")
-			
+		e.preventDefault();
+		setUserData({email, password});
+		// if (Object.is(userData, initialState)) { 
+		// } else {
+		// 	console.log("Usuario no iniciado")
 		// }
 		dispatch(login())
 		window.location = '/upload'

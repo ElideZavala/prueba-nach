@@ -68,7 +68,7 @@ const Employees = () => {
 			 options={options}
 		 />
 		 {/* <button>Crear nuevo Empleado</button> */}
-		 <Link to="/register">Crear nuevo Empleado</Link>
+		 <Link className="contain__table--button" to="/register">Crear nuevo Empleado</Link>
 	 </div>
   )
 }

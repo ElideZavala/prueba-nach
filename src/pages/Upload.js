@@ -36,7 +36,7 @@ const Upload = () => {
 					}}
 				/>
 				<div className="upload__form--text">
-					<h3> Drag and drop a file or select add multiple images</h3>
+					<h3> Arrastra o Suelta una Imagen o Selecciona y añade multiples Imagenes </h3>
 				</div>
 				<div className="upload__form--showImage">
 					<img src={preview} alt="" width='350rem' height='240rem'/>
@@ -44,7 +44,7 @@ const Upload = () => {
 
 			</form>
 			<Sliders/>
-			{preview && <button className="upload__form--button" onClick={uploadImage}>Save Image</button>}
+			{preview && <button className="upload__form--button" onClick={uploadImage}>Guarda la Imagen</button>}
 			
 			
 		</div>
