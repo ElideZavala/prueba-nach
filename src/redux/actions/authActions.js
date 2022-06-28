@@ -4,10 +4,13 @@ export const TYPES = {
 
 export const login = () => async (dispatch) => {
 	try {
+		localStorage.removeItem('token')
+		const token = localStorage.setItem('token', JSON.stringify(true))
+
 		dispatch({
 			type: TYPES.AUTH,
 			payload: {
-				token: true,
+				token: token,
 			}
 		})
 	} catch(error) {
