@@ -1,7 +1,8 @@
 # Prueba Nach
 
 ## Instalación 
- ``` git clone git@github.com:ElideZavala/
+ ``` 
+  git clone git@github.com:ElideZavala/
   prueba-nach.git
   cd prueba-nach
   npm install
