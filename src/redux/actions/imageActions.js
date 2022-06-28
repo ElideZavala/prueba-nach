@@ -1,3 +1,5 @@
+import { ALERT_TYPES } from "./alertActions" 
+
 export const IMAGE_TYPES = {
 	IMAGE: 'IMAGE',
 	IMAGE_ADD: 'IMAGE_ADD',
@@ -11,7 +13,12 @@ export const addImage = (data) => async (dispatch) => {
 			payload: data
 		})
 	} catch (error) {
-		console.log(error)
+		dispatch({
+			type: ALERT_TYPES.ALERT,
+			payload: {
+				error: error.message, 
+			}
+		})
 	}
 }
 
