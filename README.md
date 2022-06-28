@@ -1,11 +1,12 @@
 # Prueba Nach
 
 ## Instalación 
-
-``git clone git@github.com:ElideZavala/prueba-nach.git``
-`` cd prueba-nach``
-``npm install``
-``npm start``
+ ``` git clone git@github.com:ElideZavala/
+  prueba-nach.git
+  cd prueba-nach
+  npm install
+  npm start
+  ```
 ## Inicio de Seccion 
 	Email: prueba@gmail.com, 
 	Password: 123456
