@@ -17,6 +17,15 @@ const Login = () => {
 	const {email, password} = userData; 
 	const dispatch = useDispatch();
 
+	const noPaste = (e) => {
+		e.preventDefault()
+      return false;
+	}
+
+	const noCopy = (e) => {
+		e.preventDefault()
+      return false;
+	}
 
  	const handleChange = (e) => {
 		const {name, value} = e.target;
@@ -39,11 +48,13 @@ const Login = () => {
  	 <h3 className="login__header">Nach <span>employees</span></h3>
 		<h6 className="login__subheader">Login</h6>
 		<div className="login__data">
-			<form className="login__data--form" onSubmit={handleSubmit}>
+			<form  className="login__data--form" onSubmit={handleSubmit}>
 				<input 
 					className="login__data--form__email"
 					type="email"
 					name='email'
+					onPaste={noPaste}
+					onCopy={noCopy}
 					value={email}
 					onChange={handleChange} 
 					placeholder="Type your email">
@@ -52,6 +63,8 @@ const Login = () => {
 				<input 
 					className="login__data--form__password"
 					type={showpass ? "type" : "password"} /*{Si showpass es true sera type si es false password }*/
+					onPaste={noPaste}
+					onCopy={noCopy}
 					value={password}
 					name='password'
 					onChange={handleChange} 
